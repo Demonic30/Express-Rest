@@ -17,7 +17,7 @@ function getAllProducts(req, res) {
 }
 
 function deleteProduct(req, res) {
-    db.any('DELETE from products where product_id=' + req.params.id)
+    db.any('DELETE from products where id=' + req.params.id)
         .then(function (data) {
             res.status(200)
                 .json({
@@ -39,13 +39,13 @@ function deleteProduct(req, res) {
 }
 
 function updateProduct(req, res) {
-    db.any('update products set title=${title},price=${price},tags=${tags} where product_id =' + req.params.id,
+    db.any('update products set title=${title},price=${price},tags=${tags} where id =' + req.params.id,
         req.body)
         .then(function (data) {
             res.status(200).json({
                 status: 'success',
                 data: data,
-                message: 'Inserted one product'
+                message: 'Updated one product'
             });
         })
         .catch(function (error) {
@@ -54,8 +54,8 @@ function updateProduct(req, res) {
 }
 
 function insertProduct(req, res) {
-    db.any('insert into products(product_id, title, price, created_at, tags)' +
-        'values(${product_id}, ${title}, ${price}, ${created_at}, ${tags})',
+    db.any('insert into products(id, title, price, created_at, tags)' +
+        'values(${id}, ${title}, ${price}, ${created_at}, ${tags})',
         req.body)
         .then(function (data) {
             res.status(200)
@@ -80,7 +80,7 @@ function insertProduct(req, res) {
 
 
 function getProductByID(req, res) {
-    db.any('select * from products where product_id =' + req.params.id)
+    db.any('select * from products where id =' + req.params.id)
         .then(function (data) {
             res.status(200)
                 .json({
@@ -135,7 +135,7 @@ function DeletePurchase_item(req, res) {
 
 
 function updatePurchase_item(req, res) {
-    db.any('update purchase_items set purchase_id=${purchase_id},product_id=${product_id},price=${price},quantity=${quantity},status=${status} where id =' + req.params.id,
+    db.any('update purchase_items set id=${id},id=${product_id},price=${price},quantity=${quantity},status=${status} where id =' + req.params.id,
         req.body)
         .then(function (data) {
             res.status(200).json({
@@ -150,8 +150,8 @@ function updatePurchase_item(req, res) {
 }
 
 function insertPurchase_item(req, res) {
-    db.any('insert into purchase_items(id, purchase_id, product_id,price,quantity,status)' +
-        'values(${id}, ${purchase_id}, ${product_id}, ${price}, ${quantity}, ${status})',
+    db.any('insert into purchase_items(id,purchase_id,product_id,price,quantity)' +
+        'values(${id}, ${purchase_id}, ${product_id}, ${price}, ${quantity})',
         req.body)
         .then(function (data) {
             res.status(200)
@@ -232,7 +232,7 @@ function DeletePurchase(req, res) {
 
 
 function updatePurchase(req, res) {
-    db.any('update purchases set created_at=${created_at},name=${name},address=${address},state=${state},zipcode=${zipcode},user_id=${user_id} where purchase_id =' + req.params.id,
+    db.any('update purchases set created_at=${created_at},name=${name},address=${address},state=${state},zipcode=${zipcode},user_id=${user_id} where id =' + req.params.id,
         req.body)
         .then(function (data) {
             res.status(200).json({
@@ -247,8 +247,8 @@ function updatePurchase(req, res) {
 }
 
 function insertPurchase(req, res) {
-    db.any('insert into purchases(purchase_id,created_at,name,address,state,zipcode,user_id)' +
-        'values(${purchase_id}, ${created_at}, ${name}, ${address}, ${status}, ${state},${zipcode},${user_id})',
+    db.any('insert into purchases(id,created_at,name,address,state,zipcode,user_id)' +
+        'values(${id}, ${created_at}, ${name}, ${address}, ${status}, ${state},${zipcode},${user_id})',
         req.body)
         .then(function (data) {
             res.status(200)
@@ -274,7 +274,7 @@ function insertPurchase(req, res) {
 
 
 function getPurchaseByID(req, res) {
-    db.any('select * from purchases where purchase_id =' + req.params.id)
+    db.any('select * from purchases where id =' + req.params.id)
         .then(function (data) {
             res.status(200)
                 .json({
@@ -306,7 +306,7 @@ function getUser(req, res) {
 }
 
 function DeleteUser(req, res) {
-    db.any('DELETE from users where user_id=' + req.params.id)
+    db.any('DELETE from users where id=' + req.params.id)
         .then(function (data) {
             res.status(200)
                 .json({
@@ -329,7 +329,7 @@ function DeleteUser(req, res) {
 
 
 function updateUser(req, res) {
-    db.any('update users set email=${email},password=${password},details=${details},created_at=${created_at} where user_id =' + req.params.id,
+    db.any('update users set email=${email},password=${password},details=${details},created_at=${created_at} where id =' + req.params.id,
         req.body)
         .then(function (data) {
             res.status(200).json({
@@ -344,8 +344,8 @@ function updateUser(req, res) {
 }
 
 function insertUser(req, res) {
-    db.any('insert into users(user_id,email,password,details,created_at)' +
-        'values(${user_id}, ${email}, ${password}, ${details}, ${created_at}',
+    db.any('insert into users(id,email,password,details,created_at)' +
+        'values(${id}, ${email}, ${password}, ${details}, ${created_at}',
         req.body)
         .then(function (data) {
             res.status(200)
@@ -371,13 +371,13 @@ function insertUser(req, res) {
 
 
 function getUserByID(req, res) {
-    db.any('select * from users where user_id =' + req.params.id)
+    db.any('select * from users where id =' + req.params.id)
         .then(function (data) {
             res.status(200)
                 .json({
                     status: 'success',
                     data: data,
-                    message: 'Retrieved Purchase_items id:' + req.params.id
+                    message: 'Retrieved User id:' + req.params.id
                 });
         })
         .catch(function (error) {
