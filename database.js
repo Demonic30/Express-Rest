@@ -209,7 +209,7 @@ function getPurchase(req, res) {
 }
 
 function DeletePurchase(req, res) {
-    db.any('DELETE from purchases where purchase_id=' + req.params.id)
+    db.any('DELETE from purchases where id=' + req.params.id)
         .then(function (data) {
             res.status(200)
                 .json({
@@ -306,7 +306,7 @@ function getUser(req, res) {
 }
 
 function DeleteUser(req, res) {
-    db.any('DELETE from users where id=' + req.params.id)
+    db.any('DELETE from users where id =' + req.params.id)
         .then(function (data) {
             res.status(200)
                 .json({
