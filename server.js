@@ -3,6 +3,20 @@ var app = express();
 var bodyParser = require('body-parser');
 var cors = require('cors')
 app.use(cors())
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());//สำคํญต้องใช้
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+var output = {
+    status: 'succes',
+    message: 'Rest Api Is Working'
+}
+app.get('/api/json', function (req, res) {
+    res.status(200).json(output);
+
+});
 
 var db = require('./database');
 app.get('/api/products', db.getAllProducts);
