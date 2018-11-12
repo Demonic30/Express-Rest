@@ -34,14 +34,6 @@ function deleteProduct(req, res) {
                     message: 'Failed to delete products id:' + req.params.id
                 })
         })
-    db.any('select * from products').then(function (data) {
-        res.status(200)
-            .json({
-                status: 'success',
-                data: data,
-                message: 'Delete id=' + req.params.id
-            });
-    })
 }
 
 function updateProduct(req, res) {
@@ -82,14 +74,7 @@ function insertProduct(req, res) {
                     message: 'Failed to insert products id:' + req.params.id
                 })
         })
-    db.any('select * from products').then(function (data) {
-        res.status(200)
-            .json({
-                status: 'success',
-                data: data,
-                message: 'add product id=' + req.params.id
-            });
-    })
+
 }
 
 function getProductByID(req, res) {
@@ -148,14 +133,6 @@ function DeletePurchase_item(req, res) {
                     message: 'Failed to delete purchase_item id:' + req.params.id
                 })
         })
-    db.any('select * from purchase_items').then(function (data) {
-        res.status(200)
-            .json({
-                status: 'success',
-                data: data,
-                message: 'Delete purchase_item id=' + req.params.id
-            });
-    })
 }
 
 
@@ -197,14 +174,6 @@ function insertPurchase_item(req, res) {
                 })
         })
 
-    db.any('select * from purchase_items').then(function (data) {
-        res.status(200)
-            .json({
-                status: 'success',
-                data: data,
-                message: 'Insert id=' + req.params.id
-            });
-    })
 }
 
 
@@ -265,14 +234,6 @@ function DeletePurchase(req, res) {
                     message: 'Failed to Delete Purchases id:' + req.params.id
                 })
         })
-    db.any('select * from purchases').then(function (data) {
-        res.status(200)
-            .json({
-                status: 'success',
-                data: data,
-                message: 'Delete id=' + req.params.id
-            });
-    })
 }
 
 
@@ -314,14 +275,6 @@ function insertPurchase(req, res) {
                 })
         })
 
-    db.any('select * from purchases').then(function (data) {
-        res.status(200)
-            .json({
-                status: 'success',
-                data: data,
-                message: 'insert id=' + req.params.id
-            });
-    })
 }
 
 
@@ -383,14 +336,6 @@ function DeleteUser(req, res) {
                     message: 'Failed to Delete user id:' + req.params.id
                 })
         })
-    db.any('select * from users').then(function (data) {
-        res.status(200)
-            .json({
-                status: 'success',
-                data: data,
-                message: 'Delete id=' + req.params.id
-            });
-    })
 }
 
 
@@ -431,15 +376,6 @@ function insertUser(req, res) {
                     message: 'Failed to insert user id:' + req.params.id
                 })
         })
-
-    db.any('select * from users').then(function (data) {
-        res.status(200)
-            .json({
-                status: 'success',
-                data: data,
-                message: 'Delete id=' + req.params.id
-            });
-    })
 }
 
 
