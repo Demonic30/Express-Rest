@@ -26,11 +26,11 @@ app.post('/api/purchase', db.insertPurchase);
 app.put('/api/purchase/:id', db.updatePurchase);
 app.delete('/api/purchase/delete/:id', db.DeletePurchase);
 //user
-app.get('/api/User', db.getUser);
-app.get('/api/User/:id', db.getUserByID);
-app.post('/api/User', db.insertUser);
-app.put('/api/User/:id', db.updateUser);
-app.delete('/api/User/delete/:id', db.DeleteUser);
+app.get('/api/user', db.getUser);
+app.get('/api/user/:id', db.getUserByID);
+app.post('/api/user', db.insertUser);
+app.put('/api/user/:id', db.updateUser);
+app.delete('/api/user/delete/:id', db.DeleteUser);
 
 // index page
 app.get('/', function (req, res) {

@@ -18,7 +18,7 @@ function getAllProducts(req, res) {
 }
 
 function deleteProduct(req, res) {
-    db.any('DELETE from products where id=' + req.params.id,req.body)
+    db.any('DELETE from products where id=' + req.params.id, req.body)
         .then(function (data) {
             res.status(200)
                 .json({
@@ -45,14 +45,14 @@ function deleteProduct(req, res) {
 }
 
 function updateProduct(req, res) {
-    db.any(`update products set title=${title},price=${price},tags=${tags} where id =` + req.params.id,req.body)
+    db.any(`update products set title=${title},price=${price},tags=${tags} where id =` + req.params.id, req.body)
         .then(function (data) {
             res.status(200)
-            .json({
-                status: 'success',
-                data: data,
-                message: 'Updated one product'
-            });
+                .json({
+                    status: 'success',
+                    data: data,
+                    message: 'Updated one product'
+                });
         })
         .catch(function (error) {
             console.log('ERROR:', error)
@@ -66,7 +66,7 @@ function updateProduct(req, res) {
 
 function insertProduct(req, res) {
     db.any(`insert into products(id, title, price, created_at, tags)` +
-        `values(${id}, ${title}, ${price}, ${created_at}, ${tags})`,req.body)
+        `values(${id}, ${title}, ${price}, ${created_at}, ${tags})`, req.body)
         .then(function (data) {
             res.status(200)
                 .json({
@@ -104,10 +104,10 @@ function getProductByID(req, res) {
         })
         .catch(function (error) {
             res.status(500)
-            .json({
-                status: 'Failed',
-                message: 'Failed to Retrieved products id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to Retrieved products id:' + req.params.id
+                })
         })
 }
 //Purchase_item
@@ -124,15 +124,15 @@ function getPurchase_item(req, res) {
         .catch(function (error) {
             res.status(500)
             console.log('ERROR:', error)
-            .json({
-                status: 'Failed',
-                message: 'Failed to Retrieved Purchase_item id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to Retrieved Purchase_item id:' + req.params.id
+                })
         })
 }
 
 function DeletePurchase_item(req, res) {
-    db.any('DELETE from purchase_items where id=' + req.params.id,req.body)
+    db.any('DELETE from purchase_items where id=' + req.params.id, req.body)
         .then(function (data) {
             res.status(200)
                 .json({
@@ -143,10 +143,10 @@ function DeletePurchase_item(req, res) {
         .catch(function (error) {
             res.status(500)
             console.log('ERROR:', error)
-            .json({
-                status: 'Failed',
-                message: 'Failed to delete purchase_item id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to delete purchase_item id:' + req.params.id
+                })
         })
     db.any('select * from purchase_items').then(function (data) {
         res.status(200)
@@ -165,16 +165,16 @@ function updatePurchase_item(req, res) {
             res.status(200).json({
                 status: 'success',
                 data: data,
-                message: 'Update Purchase_item id='+req.params.id
+                message: 'Update Purchase_item id=' + req.params.id
             });
         })
         .catch(function (error) {
             res.status(500)
             console.log('ERROR:', error)
-            .json({
-                status: 'Failed',
-                message: 'Failed to update products id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to update products id:' + req.params.id
+                })
         })
 }
 
@@ -191,10 +191,10 @@ function insertPurchase_item(req, res) {
         .catch(function (error) {
             res.status(500)
             console.log('ERROR:', error)
-            .json({
-                status: 'Failed',
-                message: 'Failed to insert purchase_item id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to insert purchase_item id:' + req.params.id
+                })
         })
 
     db.any('select * from purchase_items').then(function (data) {
@@ -221,10 +221,10 @@ function getPurchase_itemByID(req, res) {
         })
         .catch(function (error) {
             res.status(500)
-            .json({
-                status: 'Failed',
-                message: 'Failed to Retrieved Purchase_items id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to Retrieved Purchase_items id:' + req.params.id
+                })
         })
 }
 //Purchase
@@ -241,10 +241,10 @@ function getPurchase(req, res) {
         .catch(function (error) {
             res.status(500)
             console.log('ERROR:', error)
-            .json({
-                status: 'Failed',
-                message: 'Failed to Retrieved Purchases id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to Retrieved Purchases id:' + req.params.id
+                })
         })
 }
 
@@ -260,10 +260,10 @@ function DeletePurchase(req, res) {
         .catch(function (error) {
             res.status(500)
             console.log('ERROR:', error)
-            .json({
-                status: 'Failed',
-                message: 'Failed to Delete Purchases id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to Delete Purchases id:' + req.params.id
+                })
         })
     db.any('select * from purchases').then(function (data) {
         res.status(200)
@@ -282,16 +282,16 @@ function updatePurchase(req, res) {
             res.status(200).json({
                 status: 'success',
                 data: data,
-                message: 'Update Purchase id='+req.params.id
+                message: 'Update Purchase id=' + req.params.id
             });
         })
         .catch(function (error) {
             res.status(500)
             console.log('ERROR:', error)
-            .json({
-                status: 'Failed',
-                message: 'Failed to Update Purchases id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to Update Purchases id:' + req.params.id
+                })
         })
 }
 
@@ -308,10 +308,10 @@ function insertPurchase(req, res) {
         .catch(function (error) {
             res.status(500)
             console.log('ERROR:', error)
-            .json({
-                status: 'Failed',
-                message: 'Failed to Insert Purchases id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to Insert Purchases id:' + req.params.id
+                })
         })
 
     db.any('select * from purchases').then(function (data) {
@@ -339,10 +339,10 @@ function getPurchaseByID(req, res) {
         .catch(function (error) {
             res.status(500)
             console.log('ERROR:', error)
-            .json({
-                status: 'Failed',
-                message: 'Failed to Retrieved Purchase id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to Retrieved Purchase id:' + req.params.id
+                })
         })
 }
 //user
@@ -359,15 +359,15 @@ function getUser(req, res) {
         .catch(function (error) {
             res.status(500)
             console.log('ERROR:', error)
-            .json({
-                status: 'Failed',
-                message: 'Failed to Retrieved user id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to Retrieved user id:' + req.params.id
+                })
         })
 }
 
 function DeleteUser(req, res) {
-    db.any('DELETE from users where id =' + req.params.id,req.body)
+    db.any('DELETE from users where id =' + req.params.id, req.body)
         .then(function (data) {
             res.status(200)
                 .json({
@@ -378,10 +378,10 @@ function DeleteUser(req, res) {
         .catch(function (error) {
             res.status(500)
             console.log('ERROR:', error)
-            .json({
-                status: 'Failed',
-                message: 'Failed to Delete user id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to Delete user id:' + req.params.id
+                })
         })
     db.any('select * from users').then(function (data) {
         res.status(200)
@@ -395,7 +395,7 @@ function DeleteUser(req, res) {
 
 
 function updateUser(req, res) {
-    db.any('update users set email=${email},password=${password},details=${details},created_at=${created_at} where id =' + req.params.id,req.body)
+    db.any(`update users set email=${email},password=${password},details=${details},created_at=${created_at} where id =` + req.params.id, req.body)
         .then(function (data) {
             res.status(200).json({
                 status: 'success',
@@ -406,16 +406,16 @@ function updateUser(req, res) {
         .catch(function (error) {
             res.status(500)
             console.log('ERROR:', error)
-            .json({
-                status: 'Failed',
-                message: 'Failed to update user id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to update user id:' + req.params.id
+                })
         })
 }
 
 function insertUser(req, res) {
     db.any(`insert into users(id,email,password,details,created_at)` +
-        `values(${id}, ${email}, ${password}, ${details}, ${created_at}`,req.body)
+        `values(${id}, ${email}, ${password}, ${details}, ${created_at}`, req.body)
         .then(function (data) {
             res.status(200)
                 .json({
@@ -426,10 +426,10 @@ function insertUser(req, res) {
         .catch(function (error) {
             res.status(500)
             console.log('ERROR:', error)
-            .json({
-                status: 'Failed',
-                message: 'Failed to insert user id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to insert user id:' + req.params.id
+                })
         })
 
     db.any('select * from users').then(function (data) {
@@ -457,10 +457,10 @@ function getUserByID(req, res) {
         .catch(function (error) {
             res.status(500)
             console.log('ERROR:', error)
-            .json({
-                status: 'Failed',
-                message: 'Failed to Retrieved User id:' + req.params.id
-            })
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to Retrieved User id:' + req.params.id
+                })
         })
 }
 
