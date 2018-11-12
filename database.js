@@ -37,10 +37,7 @@ function deleteProduct(req, res) {
 }
 
 function updateProduct(req, res) {
-    var title = req.body.title
-    var price = req.body.price
-    var tags = req.body.tags
-    db.any(`update products set title=${title},price=${price},tags=${tags} where id =` + req.params.id)
+    db.any(`update products set title=${title},price=${price},tags=${tags} where id =` + req.params.id,req.body)
         .then(function (data) {
             res.status(200)
                 .json({
