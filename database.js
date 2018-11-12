@@ -414,8 +414,8 @@ function updateUser(req, res) {
 }
 
 function insertUser(req, res) {
-    db.any(`insert into users(id,email,password,details,created_at)` +
-        `values(${id}, ${email}, ${password}, ${details}, ${created_at}`, req.body)
+    db.any('insert into users(id,email,password,details,created_at)' +
+        'values(${id}, ${email}, ${password}, ${details}, ${created_at}', req.body)
         .then(function (data) {
             res.status(200)
                 .json({
