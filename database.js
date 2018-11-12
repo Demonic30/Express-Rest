@@ -18,7 +18,7 @@ function getAllProducts(req, res) {
 }
 
 function deleteProduct(req, res) {
-    db.any('DELETE from products where id=' + req.params.id, req.body)
+    db.any('delete from products where id=' + req.params.id, req.body)
         .then(function (data) {
             res.status(200)
                 .json({
@@ -37,7 +37,10 @@ function deleteProduct(req, res) {
 }
 
 function updateProduct(req, res) {
-    db.any(`update products set title=${title},price=${price},tags=${tags} where id =` + req.params.id, req.body)
+    var title = req.body.title
+    var price = req.body.price
+    var tags = req.body.tags
+    db.any(`update products set title=${title},price=${price},tags=${tags} where id =` + req.params.id)
         .then(function (data) {
             res.status(200)
                 .json({
