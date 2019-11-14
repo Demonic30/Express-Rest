@@ -58,8 +58,32 @@ function getAllQuestions(req, res) {
 
 function insertQuestions(req, res) {
     console.log(req.body)
-    db.any(`insert into questions(image1, image2, image3, image4, number, question, question_type, answer1, answer2, answer3, answer4, no_question, status)` +
-        `values('${req.body.image1}', '${req.body.image2}', '${req.body.image3}', '${req.body.image4}', '${req.body.number}', '${req.body.question}', '${req.body.question_type}', '${req.body.answer1}', '${req.body.answer2}', '${req.body.answer3}', '${req.body.answer4}', '${req.body.no_question}', '${req.body.status}')` 
+    db.any(`insert into questions(image1, image2, image3, image4, number, question, question_type, answer1, answer2, answer3, answer4, no_question, status, image5, image6, image7, image8, image9, image10, answer5, answer6, answer7, answer8, answer9, answer10)` +
+        `values('${req.body.image1}', '${req.body.image2}', '${req.body.image3}', '${req.body.image4}', '${req.body.number}', '${req.body.question}', '${req.body.question_type}', '${req.body.answer1}', '${req.body.answer2}', '${req.body.answer3}', '${req.body.answer4}', '${req.body.no_question}', '${req.body.status}'), '${req.body.image5}', '${req.body.image6}', '${req.body.image7}', '${req.body.image8}', '${req.body.image9}', '${req.body.image10}', '${req.body.answer5}', '${req.body.answer6}', '${req.body.answer7}', '${req.body.answer8}', '${req.body.answer9}', '${req.body.answer10}'` 
+         )
+        .then(function (data) {
+            res.status(200)
+                .json({
+                    status: 'success',
+                    message: 'Inserted one product'
+                });
+        })
+        .catch(function (error) {
+            
+            console.log('ERROR:', error)
+            res.status(500)
+                .json({
+                    status: 'Failed',
+                    message: 'Failed to insert Questions :' + req.params.number
+                })
+        })
+
+}
+
+function insertTitlequestion(req, res) {
+    console.log(req.body)
+    db.any(`insert into titlequestion(number, icon, description, name)` +
+        `values('${req.body.number}', '${req.body.icon}', '${req.body.description}', '${req.body.name}'` 
          )
         .then(function (data) {
             res.status(200)
@@ -107,6 +131,7 @@ module.exports = {
     getAllQuestions,
     // getProductByID,
     insertQuestions,
+    insertTitlequestion,
     // updateProduct,
     // deleteProduct
     
