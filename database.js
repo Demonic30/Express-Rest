@@ -17,6 +17,24 @@ function getAllQuestions(req, res) {
         })
 }
 
+function getAllQuestionsByNumber(req, res) {
+    db.any('select * from questions where number =' + req.params.number)
+        .then(function (data) {
+            res.status(200)
+                .json({
+                    status: 'success',
+                    data: data,
+                    message: 'Retrieved question number:' +
+                        req.params.number
+                        
+                });
+        })
+       .catch(function (error) {
+            console.log('ERROR:', error)
+        
+
+        })
+}
 // function deleteProduct(req, res) {
 //     db.any('delete from products where id=' + req.params.id, req.body)
 //         .then(function (data) {
@@ -132,6 +150,7 @@ module.exports = {
     // getProductByID,
     insertQuestions,
     insertTitlequestion,
+    getAllQuestionsByNumber,
     // updateProduct,
     // deleteProduct
     
