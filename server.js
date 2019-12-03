@@ -24,13 +24,17 @@ app.get('/api/json', function (req, res) {
 
 });
 
-//Products
+//Questions
 app.get('/api/questions', db.getAllQuestions);
+app.get('/api/answers', db.getAllAnswers);
+app.get('/api/title', db.getAllTitle);
 app.get('/api/questions/:number', db.getAllQuestionsByNumber);
-app.post('/api/question', db.insertQuestions);
+app.get('/api/answers/:number', db.getAllAnswerByNumber);
+app.post('/api/questions', db.insertQuestions);
 app.post('/api/title', db.insertTitlequestion);
-// app.put('/api/products/:id', db.updateProduct);
-// app.delete('/api/products/delete/:id', db.deleteProduct);
+app.put('/api/questions/update/:number:no_question', db.updateQuestion);
+app.delete('/api/questions/delete/:no_question', db.deleteQuestion);
+app.delete('/api/survey/delete/:number', db.deleteSurvey);
 
 
 var port = process.env.PORT || 8080;
