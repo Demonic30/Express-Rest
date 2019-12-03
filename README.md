@@ -17,8 +17,8 @@ app.post('/api/questions', db.insertQuestions);
 
 app.post('/api/title', db.insertTitlequestion);
 
-app.put('/api/questions/update/:number:no_question', db.updateQuestion);
+app.put('/api/questions/update/:no_question', db.updateQuestion);
 
-app.delete('/api/questions/delete/:no_question', db.deleteQuestion);
+app.delete('/api/questions/delete/:number:no_question', db.deleteQuestion);
 
 app.delete('/api/survey/delete/:number', db.deleteSurvey);
